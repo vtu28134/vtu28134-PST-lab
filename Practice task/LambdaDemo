@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+import java.util.List;
+public class LambdaDemo {
+    public static void main(String[] args) {
+        List<String> nameList = new ArrayList<>();
+        nameList.add("Teja");
+        nameList.add("Sruthi");
+        nameList.add("Manu");
+        nameList.add("Bhavana");
+        nameList.forEach(name -> System.out.println(name));
+    }
+}
+OUTPUT:
+Teja
+Sruthi
+Manu
+Bhavana

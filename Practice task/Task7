@@ -1,0 +1,35 @@
+Task7-Nth Fibonacci Give simple Java programs using lamda function
+import java.util.Scanner;
+
+interface Fibonacci {
+    int find(int n);
+}
+
+public class NthFibonacci {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter n: ");
+        int n = sc.nextInt();
+
+        Fibonacci fib = (x) -> {
+            if (x == 0)
+                return 0;
+            if (x == 1)
+                return 1;
+
+            int a = 0, b = 1, c = 0;
+            for (int i = 2; i <= x; i++) {
+                c = a + b;
+                a = b;
+                b = c;
+            }
+            return b;
+        };
+
+        System.out.println("Nth Fibonacci Number = " + fib.find(n));
+    }
+}
+Output:
+Enter n: 7
+Nth Fibonacci Number = 13

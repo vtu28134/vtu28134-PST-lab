@@ -1,0 +1,74 @@
+
+import java.util.*;
+
+class Student {
+    int id;
+    String name;
+    double cgpa;
+
+    Student(int id, String name, double cgpa) {
+        this.id = id;
+        this.name = name;
+        this.cgpa = cgpa;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        PriorityQueue<Student> pq = new PriorityQueue<>(
+            (a, b) -> {
+                if (a.cgpa != b.cgpa)
+                    return Double.compare(b.cgpa, a.cgpa);
+                if (!a.name.equals(b.name))
+                    return a.name.compareTo(b.name);
+                return Integer.compare(a.id, b.id);
+            }
+        );
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            String event = sc.next();
+
+            if (event.equals("ENTER")) {
+                String name = sc.next();
+                double cgpa = sc.nextDouble();
+                int id = sc.nextInt();
+
+                pq.add(new Student(id, name, cgpa));
+            } else if (event.equals("SERVED")) {
+                pq.poll();
+            }
+        }
+
+        if (pq.isEmpty()) {
+            System.out.println("EMPTY");
+        } else {
+            while (!pq.isEmpty()) {
+                System.out.println(pq.poll().getName());
+            }
+        }
+
+        sc.close();
+    }
+}
+Input:
+6
+ENTER John 3.75 50
+ENTER Mark 3.8 24
+ENTER Shafaet 3.7 35
+SERVED
+ENTER Samiha 3.85 36
+ENTER Ashley 3.9 42
+Output:
+Ashley
+Samiha
+John
+Shafaet
+
