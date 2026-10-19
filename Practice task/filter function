@@ -1,0 +1,12 @@
+import java.util.Arrays;
+import java.util.List;
+public class Main{
+    public static void main(String[] args){
+        List<Integer>Salaries=Arrays.asList(10000,20000,30000);
+        Salaries.stream()
+                .filter(Salary->Salary>20000)
+                .forEach(System.out::println);
+    }
+}
+OUTPUT:
+30000

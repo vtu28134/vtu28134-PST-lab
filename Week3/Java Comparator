@@ -1,0 +1,64 @@
+import java.util.*;
+class Student {
+    private int id;
+    private String name;
+    private double cgpa;
+    public Student(int id, String name, double cgpa) {
+        this.id = id;
+        this.name = name;
+        this.cgpa = cgpa;
+    }
+    public int getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public double getCgpa() {
+        return cgpa;
+    }
+}
+class Checker implements Comparator<Student> {
+    public int compare(Student a, Student b) {
+        if (a.getCgpa() != b.getCgpa()) {
+            return Double.compare(b.getCgpa(), a.getCgpa());
+        }
+        if (!a.getName().equals(b.getName())) {
+            return a.getName().compareTo(b.getName());
+        }
+        return Integer.compare(a.getId(), b.getId());
+    }
+}
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        List<Student> students = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String name = sc.next();
+            double cgpa = sc.nextDouble();
+            int id = sc.nextInt();
+            students.add(new Student(id, name, cgpa));
+        }
+        Collections.sort(students, new Checker());
+        for (Student s : students) {
+            System.out.println(s.getName());
+        }
+
+        sc.close();
+    }
+}
+Input:
+5
+amy 100.0 1
+david 100.0 2
+heraldo 50.0 3
+aakansha 75.0 4
+aleksa 150.0 5
+Output:
+aleksa
+amy
+david
+aakansha
+heraldo

@@ -1,0 +1,27 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            String username = sc.next();
+            String password = sc.next();
+            if (username.equals("admin") &&
+                password.equals("admin123")) {
+                System.out.println("SUCCESS");
+            } else {
+                System.out.println("FAILURE");
+            }
+        }
+        sc.close();
+    }
+}
+Input:
+3
+admin admin123
+ab 123
+user pass
+Output:
+SUCCESS
+FAILURE
+FAILURE

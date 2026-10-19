@@ -1,0 +1,14 @@
+import java.util.Arrays;
+import java.util.List;
+public class Main{
+    public static void main(String[] args){
+        List<Integer>Salaries=Arrays.asList(10000,20000,30000);
+        Salaries.stream()
+                .map(Salary->Salary+Salary+0.10)
+                .forEach(System.out::println);
+    }
+}
+OUTPUT:
+20000.1
+40000.1
+60000.1

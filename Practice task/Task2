@@ -1,0 +1,34 @@
+Task2-Search for a given element in a sorted array using Binary search
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] a = {10, 20, 30, 40, 50};
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter element: ");
+        int x = sc.nextInt();
+
+        int l = 0, h = a.length - 1;
+
+        while (l <= h) {
+            int m = (l + h) / 2;
+
+            if (a[m] == x) {
+                System.out.println("Element found at index " + m);
+                return;
+            } else if (x > a[m]) {
+                l = m + 1;
+            } else {
+                h = m - 1;
+            }
+        }
+
+        System.out.println("Element not found");
+    }
+}
+
+Output:
+Enter element: 30
+Element found at index 2
